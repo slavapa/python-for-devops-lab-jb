@@ -6,7 +6,7 @@ setuptools.setup(
     author="Foo Bar",
     author_email="slavapas13@gmail.com ",
     description="A small example package",
-    url="https://github.com/naturalett/getting-started",
+    url="https://github.com/slavapa/python-for-devops-lab-jb",
     packages=['calc'],
     scripts=['calc/calculator.py'],
     python_requires='>=3.9',
