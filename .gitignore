@@ -1,3 +1,7 @@
+Exam/tmp/*
+Exam/*.txt
+Exam/*.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

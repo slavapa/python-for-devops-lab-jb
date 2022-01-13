@@ -1,3 +1,6 @@
+import subprocess, sys
+
+import docker
 from tabulate import tabulate
 
 
@@ -186,6 +189,62 @@ def exercise_16():
     return
 
 
+def exercise_17():
+    # price = input("Enter a price : ")
+    price = float("100")
+    vat = price*0.17
+    print(f"The VAT for the price {price:.2f} is: {vat:.2f}. The total price is: {price+vat:.2f}")
+    return
+
+
+def exercise_18_19():
+    # price = input("Enter a price : ")
+    price = float("100")
+    print(f"The neto price {price*0.83:.2f}, the vat is: {price*0.17:.2f}. The total price is: {price:.2f}")
+    return
+
+def exercise_20():
+    grade_arr = ["80", "85", "75", "90", "87"]
+    tot = 0
+
+    for grade in grade_arr:
+        tot += int(grade)
+
+    print(f"The average is: {tot/5:.2f}")
+
+    print(res)
+
+    return
+
+
+def output(cmd):
+    cmd_l = cmd.split()
+    output1 = subprocess.Popen(cmd_l, stdout=subprocess.PIPE).communicate()[0]
+    output1 = output1.decode("utf-8")
+    return output1
+
+
+def exercise_my_1():
+    client = docker.from_env()
+    res = client.containers.run("ubuntu:latest", "echo hello world")
+    # client.containers.run("ubuntu:latest", detach=True)
+    print(res)
+
+    res = client.containers.run("bfirsh/reticulate-splines", detach=True)
+    print(res)
+
+    res = output("docker ps")
+    print(f"Print out docker ps\n{res}")
+
+    res = output("docker images")
+    print(f"Print out images\n{res}")
+
+    ls = client.containers.list()
+    print(f"Containers list: {ls}")
+
+    return
+
+
 if __name__ == "__main__":
     # exercise_1()
     # exercise_2()
@@ -200,4 +259,8 @@ if __name__ == "__main__":
     # exercise_12()
     # exercise_14()
     # exercise_15()
-    exercise_16()
+    # exercise_16()
+    # exercise_17()
+    # exercise_18_19()
+    # exercise_20()
+    exercise_my_1()
